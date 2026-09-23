@@ -15,22 +15,33 @@ public class Questão1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Racer r = new Racer(1);
-        r.start();
+        Thread t1 = new Thread(new RacerRunnable(1));
+        t1.start();
+
+        // Forma 2 (extends Thread)
+        RacerThread t2 = new RacerThread(2);
+        t2.start();
     }
 }
 
- class Racer extends Thread{
-        int i;
-        
-        public Racer (int i){
-            this.i = i;
-        }
-        
-        public void run(){
-             while(true){
-                  System.out.println("Racer " + i + " imprimindo");
-        }
+ // Forma 1: Runnable
+class RacerRunnable implements Runnable {
+    int i;
+    public RacerRunnable(int i) { this.i = i; }
+    
+    @Override
+    public void run() {
+        while (true) { System.out.println("Racer " + i + " – imprimindo"); }
     }
-        
+}
+
+// Forma 2: extends Thread
+class RacerThread extends Thread {
+    int i;
+    public RacerThread(int i) { this.i = i; }
+    
+    @Override
+    public void run() {
+        while (true) { System.out.println("Racer " + i + " – imprimindo"); }
     }
+}
