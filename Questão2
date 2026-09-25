@@ -1,0 +1,42 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package questão1;
+
+/**
+ *
+ * @author Aluno
+ */
+public class Questão1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+       
+        for(int x = 1; x <= 10; x++){
+        Thread t1 = new Thread(new RacerRunnable(x));
+        t1.start();
+        }
+       
+    }
+}
+
+ 
+class RacerRunnable implements Runnable {
+    int i;
+    public RacerRunnable(int i) { 
+        this.i = i; 
+    }
+    
+    
+    public void run() {
+        for(int y = 1; y <= 10; i++){
+        while (true) { System.out.println("Racer " + i + " – imprimindo"); }
+        }
+        }
+    }
+
+
